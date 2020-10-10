@@ -5,7 +5,7 @@
         <%= @prototype.title %>
       </p>
       
-      <%= link_to "by#{@prototype.user.name}", root_path, class: :prototype__user %>
+      <%= link_to "by#{@prototype.user.name}", "/users/#{@prototype.user.id}", class: :prototype__user %>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
       <% if user_signed_in? && current_user.id == @prototype.user_id %>
         <div class="prototype__manage">
@@ -53,7 +53,7 @@
                    <p>
                   　 <li class="comments_list">　
                      <%= comment.text %>
-                     <strong><%= link_to current_user.name, "/users/#{comment.user.id}", class: :comment_user %></strong>
+                     <strong><%= link_to comment.user.name, "/users/#{comment.user.id}", class: :comment_user %></strong>
                      </li>
                    </p>
                  <% end %>
